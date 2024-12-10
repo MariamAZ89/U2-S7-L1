@@ -1,64 +1,47 @@
-class Pets {
-  constructor(petName, ownerName, species, breed) {
-    this.petName = petName;
-    this.ownerName = ownerName;
-    this.species = species;
-    this.breed = breed;
+//primo EX:
+
+const Person = function () {
+  this.firstName = "";
+  this.lastName = "";
+  this.age = "";
+  this.location = "";
+  this.utente = () => {
+    return `$ {this.firstName} ${this.lastName} di ${this.age} anni, attualmente vive in ${this.location}`;
+  };
+};
+const ind1 = new Person();
+ind1.firstName = "MArco";
+ind1.lastName = "Pino";
+ind1.age = 72;
+ind1.location = "Sardegna";
+
+//console.log(ind1.utente());
+
+const ind2 = new Person();
+ind2.firstName = "Mouna";
+ind2.lastName = "Favola";
+ind2.age = 60;
+ind2.location = "Milano";
+
+// console.log(ind2.utente());
+
+class User {
+  constructor(_firstName, _lastName, _age, _location) {
+    this.firstName = _firstName;
+    this.lastName = _lastName;
+    this.age = _age;
+    this.location = _location;
   }
 
-  Diff(AnownerName) {
-    if (this.ownerName !== AnownerName.ownerName) {
-      return console.log(false);
+  Case(ind2) {
+    if (this.age >= ind2.age) {
+      return `${this.firstName} ${this.lastName} di ${this.age} anni, e attualmente vive a ${this.location} ed è più grande di ${ind2.firstName} ${ind2.lastName} di ${ind2.age} anni, e attualmente vive a ${ind2.location}`;
     } else {
-      label.innerText = "il proprietario dello stesso animale è: " + this.ownerName;
-      return console.log(true);
+      return `${ind2.firstName} ${ind2.lastName} di ${ind2.age} anni, e attualmente vive a ${ind2.location} è meno vecchio di ${this.firstName} ${this.lastName} di ${this.age} anni, e attualmente vive a ${this.location}`;
     }
   }
 }
 
-let petname = document.getElementById("petname");
-let ownerName = document.getElementById("ownername");
-let species = document.getElementById("species");
-let breed = document.getElementById("breed");
-let button2 = document.getElementById("add2");
-let list2 = document.getElementById("list2");
-let label = document.getElementById("proprietario");
-let arrayPetPerson = [];
-let arrayPet = [];
-
-const createPet = () => {
-  let pet = new Pets(petname.value, ownerName.value, species.value, breed.value);
-  arrayPet.push(pet);
-};
-
-const createList2 = () => {
-  list2.innerHTML = "";
-
-  arrayPet.forEach((el) => {
-    let li = document.createElement("li");
-    li.innerText = `il pet si chiama: ${el.petName} il proprietario è: ${el.ownerName} la specie è: ${el.species} la razza è:${el.breed}`;
-    list2.appendChild(li);
-  });
-};
-
-const deleteList2 = () => {
-  petname.value = "";
-  ownerName.value = "";
-  species.value = "";
-  breed.value = "";
-};
-
-const diff2 = () => {
-  for (let i = 0; i < arrayPet.length; i++) {
-    for (let i2 = 0; i2 < i; i2++) {
-      arrayPet[i2].Diff(arrayPet[i]);
-    }
-  }
-};
-
-button2.addEventListener("click", () => {
-  createPet();
-  createList2();
-  deleteList2();
-  diff2();
-});
+const ind1User = new User("Marco", "Pino", 72, "Sardegna");
+const ind2User = new User("Mouna", "Favola", 60, "Milano");
+console.log(ind1User.Case(ind2User));
